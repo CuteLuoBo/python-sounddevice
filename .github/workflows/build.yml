@@ -34,5 +34,3 @@ jobs:
         run: |
           ls
           pwd
-          chmod +x make_dist.sh
-          ./make_dist.sh
