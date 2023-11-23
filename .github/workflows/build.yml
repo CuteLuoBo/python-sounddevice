@@ -33,7 +33,16 @@ jobs:
       - name: Run tests
         working-directory: git-repo
         run: |
-          ls
-          pwd
           chmod +x make_dist.sh
           ./make_dist.sh
+          cd build
+          ls
+      - name: Create Release
+        id: create_release
+        env:
+          GITHUB_TOKEN: ${{env._GITHUB_PAT}}
+        uses: softprops/action-gh-release@v1
+        with:
+          files: build/*  # Specify the path to your build artifacts
+          tag_name: ${{ github.ref }}
+          title: Release ${{ github.ref }}
