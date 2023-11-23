@@ -31,6 +31,9 @@ jobs:
         run: |
           python -m pip install .
       - name: Run tests
+        working-directory: git-repo
         run: |
           ls
           pwd
+          chmod +x make_dist.sh
+          ./make_dist.sh
